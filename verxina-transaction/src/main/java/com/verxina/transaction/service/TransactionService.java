@@ -1,6 +1,7 @@
 package com.verxina.transaction.service;
 
 import com.verxina.common.dto.TransactionRequest;
+import com.verxina.common.exception.ResourceNotFoundException;
 import com.verxina.transaction.domain.Transaction;
 import com.verxina.transaction.repository.TransactionRepository;
 import lombok.RequiredArgsConstructor;
@@ -40,6 +41,6 @@ public class TransactionService {
     @Transactional(readOnly = true)
     public Transaction getTransactionById(String id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Transaction with ID " + id + " not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Transaction with ID " + id + " not found"));
     }
 }

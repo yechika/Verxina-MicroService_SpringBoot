@@ -17,20 +17,18 @@ public class TransactionController {
 
     private final TransactionService service;
 
-    // ni buat POST
+    // ini buat POST
     @PostMapping
     public ResponseEntity<Transaction> createTransaction(@Valid @RequestBody TransactionRequest request){
         Transaction savedTransaction = service.createTransaction(request);
         return ResponseEntity.ok(savedTransaction);
     }
-
-    // ni GET yang all
+    // ini GET yang all
     @GetMapping
     public ResponseEntity<List<Transaction>> getAllTransactions() {
         return ResponseEntity.ok(service.getAllTransactions());
     }
-
-    // ni GET per id
+    // ini GET per id
     @GetMapping("/{id}")
     public ResponseEntity<Transaction> getTransactionById(@PathVariable String id) {
         return ResponseEntity.ok(service.getTransactionById(id));
